@@ -16,7 +16,7 @@ const CreatePrompt = () => {
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "" });
 
-     const createPrompt = async (e) => {
+  const createNote = async(e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
