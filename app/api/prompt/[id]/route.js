@@ -16,7 +16,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { note, tag } = await request.json();
+    const { post, tag } = await request.json();
 
     try {
         await connectToDB();
@@ -29,7 +29,7 @@ export const PATCH = async (request, { params }) => {
         }
 
         // Update the prompt with new data
-        existingPrompt.note = note;
+        existingPrompt.note = post;
       
 
         await existingPrompt.save();
