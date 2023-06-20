@@ -1,4 +1,4 @@
-import Prompt from "@models/prompt";
+import Note from "@models/Note";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (request) => {
@@ -6,7 +6,7 @@ export const POST = async (request) => {
 
     try {
         await connectToDB();
-        const newPrompt = new Prompt({ creator: userId, prompt, tag });
+        const newPrompt = new Note({ creator: userId, prompt, tag });
 
         await newPrompt.save();
         return new Response(JSON.stringify(newPrompt), { status: 201 })
