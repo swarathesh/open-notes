@@ -12,7 +12,7 @@ const Feed = () => {
   const [allNotes, setAllNotes] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
+    const response = await fetch("/api/prompt",{ cache: 'no-store' });
     const data = await response.json();
 
     setAllNotes(data);
@@ -58,7 +58,7 @@ const Feed = () => {
 
 
   const handleSearchChange = (e) => {
-    e.preventDefault();
+ 
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
