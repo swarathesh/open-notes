@@ -14,19 +14,18 @@ const CreatePrompt = () => {
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ prompt: "", tag: "" });
+  const [post, setPost] = useState({ prompt: "" });
 
   const createNote = async(e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/notes/new", {
+      const response = await fetch("/api/note/new", {
         method: "POST",
         body: JSON.stringify({
-          prompt: post.prompt,
-          userId: session?.user.id,
-          tag: post.tag,
+          note: post.prompt,
+          userId: session?.user.id
         }),
       });
 
