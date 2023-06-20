@@ -10,12 +10,21 @@ export const POST = async (request) => {
     const summary = note;
     try{
         await connectToDB();
-       
+
 
         const newNote = new Note ({ creator: userId, note, summary });
+
+        const headers = new Headers();
+        headers.set("Cache-Control", "no-store");
+
+        const responseInit = {
+            status: 201,
+            statusText: 'OK',
+            headers: headers
+          };
         
         await newNote.save();
-        return new Response(JSON.stringify(newNote), { status: 201 });
+        return new Response(JSON.stringify(newNote), responseInit);
     } catch (error) {
         return new Response("Failed to create a new note", { status: 500 });
     }
