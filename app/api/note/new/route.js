@@ -15,7 +15,7 @@ export const POST = async (request) => {
         const newNote = new Note ({ creator: userId, note, summary });
 
         const headers = new Headers();
-        headers.set("Cache-Control", "no-store");
+        headers.append("Cache-Control", "no-store");
 
         const responseInit = {
             status: 201,
