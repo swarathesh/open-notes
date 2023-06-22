@@ -1,7 +1,8 @@
 import Note from "@models/Note";
 import { connectToDB } from "@utils/database";
 
-export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
 
 export const POST = async (request) => {
 
