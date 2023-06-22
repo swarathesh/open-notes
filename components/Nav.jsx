@@ -4,12 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
+import { useTheme } from "next-themes";
 
 const Nav = () => {
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   useEffect(() => {
     (async () => {
@@ -32,8 +37,15 @@ const Nav = () => {
 
       {/* Desktop Navigation */}
       <div className='sm:flex hidden'>
+        <div className="flex mr-3">
+        <button
+            onClick={() => theme == "dark"? setTheme('light'): setTheme("dark")}
+            className='outline_btn'>
+            Toggle Mode
+        </button>
+        </div>
         {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
+          <div className='flex  gap-3 md:gap-5'>
             <Link href='/create-prompt' className='black_btn'>
               Create Post
             </Link>

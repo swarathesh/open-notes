@@ -1,6 +1,10 @@
+"use client";
+
 import '@styles/globals.css'
 import Nav from '@components/Nav'
 import Provider from '@components/Provider'
+import { ThemeProvider } from "next-themes"
+
 
 export const metadata = {
     title: 'Open Notes',
@@ -10,9 +14,11 @@ export const metadata = {
 
 const layout = ({children}) => {
   return (
+
     <Provider>
      <html lang="en">
        <body>
+       <ThemeProvider attribute="class">
          <div className="main">
             <div className="gradiant" />
          </div>
@@ -20,9 +26,12 @@ const layout = ({children}) => {
           <Nav />
             {children}
         </main>
+        </ThemeProvider>
        </body>
      </html>
      </Provider>
+
+     
   )
 }
 
