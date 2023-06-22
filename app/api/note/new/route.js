@@ -1,8 +1,6 @@
 import Note from "@models/Note";
 import { connectToDB } from "@utils/database";
 
-export const revalidate = 0;
-// false | 'force-cache' | 0 | number
 
 
 export const POST = async (request) => {
